@@ -118,7 +118,7 @@ function enviarPedidoZap() {
 
     // 1. Abre o WhatsApp
     // Substitua o número abaixo pelo seu (Use o formato 55 + DDD + Numero)
-    window.open(`https://wa.me/5521999999999?text=${mensagem}`, '_blank');
+    window.open(`https://wa.me/5521973043816?text=${mensagem}`, '_blank');
 
     // 2. Mostra a tela de sucesso no site
     document.getElementById('aba-checkout').classList.remove('ativa');
