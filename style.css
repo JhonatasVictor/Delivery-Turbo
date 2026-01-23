@@ -159,6 +159,45 @@ button:active { transform: scale(0.98); }
 
 footer { padding: 40px 20px; text-align: center; color: #666; background-color: #111; font-size: 0.8rem; margin-top: 40px; }
 
+/* --- TELA DE SUCESSO --- */
+.msg-sucesso-container {
+    text-align: center;
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.icone-sucesso {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    animation: pular 0.5s infinite alternate;
+}
+
+@keyframes pular {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+.msg-sucesso-container h2 {
+    color: #25d366; /* Verde WhatsApp */
+    margin-bottom: 10px;
+}
+
+.msg-sucesso-container p {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.animation-check {
+    font-size: 5rem;
+    margin: 30px 0;
+    color: #25d366;
+}
+
 /* --- 5. RESPONSIVIDADE (CELULARES) --- */
 @media (max-width: 768px) {
     

@@ -77,29 +77,63 @@ function enviarPedidoZap() {
     const endereco = document.getElementById('input-endereco').value;
     const pagamento = document.getElementById('select-pagamento').value;
     
+    // Validação
     if (nome === "" || endereco === "" || pagamento === "") {
-        alert("Por favor, preencha todos os campos do pedido!");
+        alert("Ops! Preencha seus dados para a entrega. 📝");
         return;
     }
 
-    // Formata mensagem para WhatsApp
-    let mensagem = `*NOVO PEDIDO - DELIVERY TURBO* 🍔%0A%0A`;
-    mensagem += `*Cliente:* ${nome}%0A`;
-    mensagem += `*Endereço:* ${endereco}%0A`;
-    mensagem += `*Pagamento:* ${pagamento}%0A%0A`;
-    mensagem += `*ITENS DO PEDIDO:*%0A`;
+    // --- MONTAGEM DA MENSAGEM ---
+    // %0A é a quebra de linha no WhatsApp
+    // *texto* deixa em negrito
+    
+    let mensagem = `🔔 *NOVO PEDIDO CHEGANDO* 🔔%0A%0A`;
+    
+    // Dados do Cliente
+    mensagem += `👤 *Cliente:* ${nome}%0A`;
+    mensagem += `📍 *Endereço:* ${endereco}%0A`;
+    mensagem += `💳 *Pagamento:* ${pagamento}%0A`;
+    mensagem += `-----------------------------------%0A`;
+    
+    // Itens do Pedido
+    mensagem += `🍔 *ITENS DO PEDIDO:*%0A%0A`;
     
     carrinho.forEach(item => {
-        mensagem += `- ${item.nome}%0A`;
+        // Formata: "▪️ 1x X-Bacon ... R$ 25,90"
+        mensagem += `▪️ 1x ${item.nome} ... R$ ${item.preco.toFixed(2).replace('.', ',')}%0A`;
     });
     
+    // Cálculos Finais
     let totalProdutos = carrinho.reduce((sum, item) => sum + item.preco, 0);
     let totalFinal = totalProdutos + taxaEntrega;
     
-    mensagem += `%0A*Subtotal:* R$ ${totalProdutos.toFixed(2).replace('.', ',')}`;
-    mensagem += `%0A*Taxa de Entrega (7km):* R$ ${taxaEntrega.toFixed(2).replace('.', ',')}`;
-    mensagem += `%0A*TOTAL A PAGAR:* R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
+    mensagem += `%0A-----------------------------------%0A`;
+    mensagem += `📦 *Subtotal:* R$ ${totalProdutos.toFixed(2).replace('.', ',')}%0A`;
+    mensagem += `🛵 *Taxa de Entrega:* R$ ${taxaEntrega.toFixed(2).replace('.', ',')}%0A`;
+    mensagem += `✅ *TOTAL A PAGAR:* *R$ ${totalFinal.toFixed(2).replace('.', ',')}*%0A`;
+    mensagem += `-----------------------------------%0A`;
+    mensagem += `Aguardo a confirmação! 🚀`;
 
-    // Substitua o número abaixo pelo seu número real com DDD
-    window.open(`https://wa.me/5521973043816?text=${mensagem}`, '_blank');
+    // --- FIM DA MENSAGEM ---
+
+    // 1. Abre o WhatsApp
+    // Substitua o número abaixo pelo seu (Use o formato 55 + DDD + Numero)
+    window.open(`https://wa.me/5521999999999?text=${mensagem}`, '_blank');
+
+    // 2. Mostra a tela de sucesso no site
+    document.getElementById('aba-checkout').classList.remove('ativa');
+    document.getElementById('aba-sucesso').classList.add('ativa');
+}
+
+// Função para botão "Fazer Novo Pedido" na tela de sucesso
+function fecharPedidoTotal() {
+    // Limpa o carrinho
+    limparCarrinho();
+    
+    // Volta para a tela inicial do carrinho (vazia)
+    document.getElementById('aba-sucesso').classList.remove('ativa');
+    document.getElementById('aba-carrinho').classList.add('ativa');
+    
+    // Fecha a aba lateral
+    toggleCart();
 }
