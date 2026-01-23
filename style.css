@@ -5,14 +5,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #1a1a1a;
     color: #ffffff;
-    overflow-x: hidden; /* Evita rolagem lateral indesejada */
-    -webkit-tap-highlight-color: transparent; /* Remove clique azul no mobile */
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* --- 2. CABEÇALHO (HEADER) --- */
+/* --- 2. HEADER --- */
 header {
     background-color: #b30000;
-    padding: 15px 5%; /* % ajuda a ajustar em qualquer tela */
+    padding: 15px 5%;
     border-bottom: 4px solid #ffcc00;
     display: flex;
     justify-content: space-between;
@@ -23,60 +23,37 @@ header {
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
-.header-content {
-    max-width: 70%;
-}
-
-h1 {
-    margin: 0;
-    font-size: 1.5rem; /* Usar REM é melhor para responsividade */
-    line-height: 1.1;
-}
-
-header p {
-    margin: 5px 0 0;
-    font-size: 0.85rem;
-    opacity: 0.9;
-}
-
+.header-content { max-width: 70%; }
+h1 { margin: 0; font-size: 1.5rem; line-height: 1.1; }
+header p { margin: 5px 0 0; font-size: 0.85rem; opacity: 0.9; }
 .destaque { color: #ffcc00; }
 
-/* Ícone do Carrinho */
+/* Ícone Carrinho */
 .cart-icon-container {
     position: relative;
     cursor: pointer;
     padding: 10px;
-    background: rgba(0,0,0,0.1); /* Fundo leve para melhorar o toque */
+    background: rgba(0,0,0,0.1);
     border-radius: 50%;
 }
-
 .cart-icon { font-size: 1.8rem; }
-
 .cart-count {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #ffcc00;
-    color: #b30000;
-    font-weight: bold;
-    border-radius: 50%;
-    width: 22px;
-    height: 22px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.8rem;
-    border: 2px solid #b30000;
+    position: absolute; top: 0; right: 0;
+    background-color: #ffcc00; color: #b30000;
+    font-weight: bold; border-radius: 50%;
+    width: 22px; height: 22px;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 0.8rem; border: 2px solid #b30000;
 }
 
-/* --- 3. CONTEÚDO PRINCIPAL (MAIN) --- */
+/* --- 3. MENU E CARDS (Onde a mágica acontece) --- */
 h2 {
     text-align: center;
     color: #ffcc00;
     border-bottom: 2px solid #333;
     padding-bottom: 10px;
-    margin: 30px auto 10px;
-    display: table; /* Centraliza a borda junto com o texto */
+    margin: 30px auto 20px;
+    display: table;
     font-size: 1.4rem;
 }
 
@@ -85,53 +62,44 @@ h2 {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    padding: 20px 5%; /* Margem lateral segura */
-    max-width: 1200px; /* Não deixa esticar demais em telas gigantes */
+    padding: 10px; /* Reduzi o padding lateral para ganhar espaço no mobile */
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Cards dos Produtos */
+/* ESTILO DO CARD */
 .item-card {
     background-color: #2c2c2c;
     border-radius: 12px;
-    width: 300px; /* Largura padrão PC */
+    /* No Desktop: largura fixa */
+    width: 280px; 
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* ISSO GARANTE: FOTO EM CIMA, TEXTO EMBAIXO */
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    overflow: hidden; /* Garante que a imagem não saia das bordas arredondadas */
     transition: transform 0.2s;
-    overflow: hidden;
 }
 
-.item-card:hover {
-    transform: translateY(-5px); /* Só funciona bem em PC com mouse */
-}
+.item-card:hover { transform: translateY(-5px); }
 
+/* A Imagem */
 .item-card img {
     width: 100%;
-    height: 180px;
-    object-fit: cover;
+    height: 180px; /* Altura padrão */
+    object-fit: cover; /* Corta a imagem para preencher sem distorcer */
 }
 
+/* O Texto dentro do card */
 .card-content {
     padding: 15px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    flex-grow: 1; /* Ocupa o espaço que sobrar */
     justify-content: space-between;
 }
 
-.card-content h3 {
-    margin: 0 0 8px 0;
-    color: #ffcc00;
-    font-size: 1.1rem;
-}
-
-.card-content p {
-    font-size: 0.9rem;
-    color: #ddd;
-    margin-bottom: 15px;
-    line-height: 1.4;
-}
+.card-content h3 { margin: 0 0 8px 0; color: #ffcc00; font-size: 1.1rem; }
+.card-content p { font-size: 0.9rem; color: #ddd; margin-bottom: 15px; line-height: 1.4; }
 
 .preco {
     font-size: 1.3rem;
@@ -141,194 +109,82 @@ h2 {
     display: block;
 }
 
-/* Botões Gerais */
 button {
-    border: none;
-    padding: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 8px;
-    width: 100%;
-    font-size: 1rem;
-    transition: filter 0.2s;
-    font-family: inherit;
+    border: none; padding: 12px; font-weight: bold; cursor: pointer;
+    border-radius: 8px; width: 100%; font-size: 1rem;
+    transition: filter 0.2s; font-family: inherit;
 }
-
-button:active {
-    transform: scale(0.98); /* Efeito de clique no celular */
-}
-
+button:active { transform: scale(0.98); }
 .btn-comprar { background-color: #ffcc00; color: #b30000; }
 
-/* --- 4. BARRA LATERAL (CARRINHO & CHECKOUT) --- */
+/* --- 4. BARRA LATERAL / CHECKOUT --- */
 .cart-sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 350px; /* Largura Desktop */
-    height: 100vh;
+    position: fixed; top: 0; right: 0;
+    width: 350px; height: 100vh;
     background-color: #222;
     box-shadow: -5px 0 25px rgba(0,0,0,0.7);
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    z-index: 2000; /* Garante que fique acima de tudo */
+    display: flex; flex-direction: column;
+    z-index: 2000;
     transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* Ajuste para iPhones novos (área segura embaixo) */
-    padding-bottom: env(safe-area-inset-bottom); 
+    padding-bottom: env(safe-area-inset-bottom);
 }
+.cart-sidebar.cart-open { transform: translateX(0); }
 
-.cart-sidebar.cart-open {
-    transform: translateX(0);
-}
+.sidebar-content { position: relative; flex-grow: 1; overflow-x: hidden; overflow-y: auto; }
 
-.sidebar-content {
-    position: relative;
-    flex-grow: 1;
-    overflow-x: hidden;
-    overflow-y: auto; /* Permite rolar se a lista for grande */
-}
-
-/* Animação de troca de tela */
 .carrinho-secao {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(30px);
-    transition: all 0.3s ease;
-    padding-bottom: 20px; /* Espaço extra no final */
+    position: absolute; top: 0; left: 0; width: 100%;
+    opacity: 0; visibility: hidden; transform: translateX(30px);
+    transition: all 0.3s ease; padding-bottom: 80px; /* Espaço para não cobrir botões */
 }
+.carrinho-secao.ativa { opacity: 1; visibility: visible; transform: translateX(0); position: relative; }
 
-.carrinho-secao.ativa {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
-    position: relative;
-}
+/* Elementos internos do carrinho */
+.close-cart { background: none; color: #ffcc00; font-size: 2.5rem; align-self: flex-end; padding: 0 10px; margin-bottom: 10px; }
+.cart-list { list-style: none; padding: 0; margin: 10px 0 20px; }
+.cart-list li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #444; font-size: 0.95rem; }
+.cart-total { background-color: #333; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center; }
+.msg-erro { color: #ff5555; text-align: center; font-weight: bold; min-height: 20px; margin-bottom: 10px; font-size: 0.9rem; }
 
-/* Elementos do Carrinho */
-.close-cart {
-    background: none;
-    color: #ffcc00;
-    font-size: 2.5rem;
-    align-self: flex-end;
-    padding: 0 10px;
-    margin-bottom: 10px;
-}
-
-.cart-list {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 20px;
-}
-
-.cart-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid #444;
-    font-size: 0.95rem;
-}
-
-.cart-total {
-    background-color: #333;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.msg-erro {
-    color: #ff5555;
-    text-align: center;
-    font-weight: bold;
-    min-height: 20px;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-}
-
-/* Formulário Checkout */
+/* Inputs e Botões do Carrinho */
 .input-group { margin-bottom: 15px; text-align: left; }
 .input-group label { display: block; color: #ffcc00; margin-bottom: 5px; font-size: 0.9rem;}
-.input-group input, .input-group select {
-    width: 100%;
-    padding: 12px;
-    background-color: #333;
-    border: 1px solid #555;
-    color: white;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-size: 1rem; /* Evita zoom automático no iPhone */
-}
-
-.resumo-checkout {
-    background-color: #2c2c2c;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 10px;
-    text-align: center;
-    border: 1px solid #444;
-}
-
-/* Botões de Ação */
+.input-group input, .input-group select { width: 100%; padding: 12px; background-color: #333; border: 1px solid #555; color: white; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
+.resumo-checkout { background-color: #2c2c2c; padding: 15px; border-radius: 8px; margin-top: 10px; text-align: center; border: 1px solid #444; }
 .btn-finalizar, .btn-confirmar { background-color: #25d366; color: white; margin-top: 10px; font-size: 1.1rem; }
 .btn-limpar { background-color: #d32f2f; color: white; margin-top: 10px; }
 .btn-voltar { background-color: #555; color: white; margin-top: 10px; }
 
-footer {
-    padding: 40px 20px;
-    text-align: center;
-    color: #666;
-    background-color: #111;
-    font-size: 0.8rem;
-    margin-top: 40px;
-}
+footer { padding: 40px 20px; text-align: center; color: #666; background-color: #111; font-size: 0.8rem; margin-top: 40px; }
 
-/* --- 5. RESPONSIVIDADE (MEDIA QUERIES) --- */
-/* Regras apenas para telas menores que 768px (Celulares) */
+/* --- 5. RESPONSIVIDADE (CELULARES) --- */
 @media (max-width: 768px) {
     
-    /* Header compacto */
-    header {
-        padding: 10px 15px;
+    .cardapio-container {
+        padding: 10px 15px; /* Margem lateral pequena */
     }
-    h1 { font-size: 1.3rem; }
-    
-    /* Cardápio: 1 item por linha para focar na foto */
+
+    /* MUDANÇA PRINCIPAL NOS CARDS AQUI */
     .item-card {
-        width: 100%; /* Ocupa a largura toda disponível */
-        max-width: 400px; /* Mas não deixa ficar gigante em tablets */
-        flex-direction: row; /* Opcional: Foto ao lado do texto? Vamos manter em coluna por enquanto */
+        width: 100%; /* Ocupa 100% da largura disponível */
+        max-width: 400px; /* Limite para não ficar gigante em tablets */
+        margin-bottom: 20px; /* Espaço entre um card e outro */
+        
+        /* Garante estrutura vertical */
+        display: flex; 
+        flex-direction: column; 
     }
+
+    .item-card img {
+        height: 200px; /* Altura generosa para a foto */
+    }
+
+    /* Carrinho Full Screen */
+    .cart-sidebar { width: 100%; padding: 15px; box-sizing: border-box; }
     
-    /* Carrinho ocupando a tela inteira */
-    .cart-sidebar {
-        width: 100%; /* Largura total */
-        padding: 15px;
-        box-sizing: border-box; /* Garante que padding não estoure a largura */
-    }
-
-    /* Aumenta botões para dedo */
-    button {
-        padding: 15px; /* Área de toque maior */
-        font-size: 1.1rem;
-    }
-
-    .close-cart {
-        font-size: 3rem; /* X maior para fechar fácil */
-        padding: 10px;
-    }
-}
-
-/* Regras para celulares MUITO pequenos (iPhone SE, 5S, Galaxy Fold fechado) */
-@media (max-width: 370px) {
-    h1 { font-size: 1.1rem; }
-    .cart-icon { font-size: 1.5rem; }
-    .preco { font-size: 1.1rem; }
+    header { padding: 10px 15px; }
+    h1 { font-size: 1.3rem; }
+    button { padding: 15px; } /* Botão maior para o dedo */
 }
