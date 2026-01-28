@@ -1,4 +1,4 @@
-/* --- RESET BÁSICO --- */
+/* --- 1. RESET E BASE --- */
 body {
     margin: 0; padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -6,7 +6,7 @@ body {
     overflow-x: hidden; -webkit-tap-highlight-color: transparent;
 }
 
-/* --- HEADER --- */
+/* --- 2. HEADER --- */
 header {
     background-color: #b30000; padding: 15px 5%;
     border-bottom: 4px solid #ffcc00;
@@ -32,7 +32,7 @@ header p { margin: 5px 0 0; font-size: 0.85rem; opacity: 0.9; }
     font-size: 0.8rem; border: 2px solid #b30000;
 }
 
-/* --- PESQUISA --- */
+/* --- 3. PESQUISA --- */
 .search-container {
     padding: 20px 5%;
     display: flex; justify-content: center;
@@ -46,7 +46,7 @@ header p { margin: 5px 0 0; font-size: 0.85rem; opacity: 0.9; }
 }
 #search-input:focus { border-color: #ffcc00; }
 
-/* --- CARDÁPIO --- */
+/* --- 4. CARDÁPIO --- */
 h2 {
     text-align: center; color: #ffcc00; border-bottom: 2px solid #333;
     padding-bottom: 10px; margin: 30px auto 20px;
@@ -82,36 +82,58 @@ button {
 button:active { transform: scale(0.98); }
 .btn-comprar { background-color: #ffcc00; color: #b30000; }
 
-/* --- SIDEBAR --- */
+/* --- 5. SIDEBAR (CORREÇÃO DE TAMANHO E ROLAGEM) --- */
 .cart-sidebar {
     position: fixed; top: 0; right: 0;
-    width: 350px; height: 100vh;
-    background-color: #222; box-shadow: -5px 0 25px rgba(0,0,0,0.7);
-    padding: 20px; display: flex; flex-direction: column;
+    width: 380px; /* Largura padrão PC */
+    height: 100vh; /* Altura total da tela */
+    height: 100dvh; /* Altura dinâmica para celulares modernos */
+    background-color: #222; 
+    box-shadow: -5px 0 25px rgba(0,0,0,0.7);
+    padding: 0; /* Remove padding global para usar Flexbox */
+    display: flex; flex-direction: column; /* Organiza em coluna (Topo fixo + Conteúdo) */
     z-index: 2000; transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    padding-bottom: env(safe-area-inset-bottom);
 }
 .cart-sidebar.cart-open { transform: translateX(0); }
-.sidebar-content { position: relative; flex-grow: 1; overflow-x: hidden; overflow-y: auto; }
-.close-cart { background: none; color: #ffcc00; font-size: 2.5rem; align-self: flex-end; padding: 0 10px; margin-bottom: 10px; }
 
+/* Botão fechar fixo no topo da sidebar */
+.close-cart { 
+    background: #222; color: #ffcc00; font-size: 2.5rem; 
+    text-align: right; padding: 10px 20px; 
+    border-bottom: 1px solid #333;
+    flex-shrink: 0; /* Não deixa o botão encolher */
+}
+
+/* Área de conteúdo que rola */
+.sidebar-content { 
+    position: relative; 
+    flex-grow: 1; /* Ocupa todo o espaço restante */
+    overflow-y: auto; /* Habilita rolagem só aqui dentro */
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+/* Transições das Abas */
 .carrinho-secao {
     position: absolute; top: 0; left: 0; width: 100%;
     opacity: 0; visibility: hidden; transform: translateX(30px);
-    transition: all 0.3s ease; padding-bottom: 80px;
+    transition: all 0.3s ease; 
+    
+    /* Espaço extra no fundo para o botão não ficar escondido no celular */
+    padding-bottom: 120px; 
+    padding-right: 40px; /* Evita corte lateral */
+    box-sizing: border-box; /* Garante que padding não estoure a largura */
 }
 .carrinho-secao.ativa { opacity: 1; visibility: visible; transform: translateX(0); position: relative; }
 
-/* Estilos de Troco */
-.hidden-troco { display: none; background-color: #333; padding: 10px; border-radius: 8px; border: 1px dashed #ffcc00; margin-bottom: 15px; }
-
-/* Formulários */
+/* --- ELEMENTOS INTERNOS DO CARRINHO --- */
 .cart-list { list-style: none; padding: 0; margin: 10px 0 20px; }
 .cart-list li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #444; font-size: 0.95rem; }
 .cart-total { background-color: #333; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center; }
 .msg-erro { color: #ff5555; text-align: center; font-weight: bold; min-height: 20px; margin-bottom: 10px; font-size: 0.9rem; }
 
+/* Formulários */
 .input-group { margin-bottom: 15px; text-align: left; }
 .input-group label { display: block; color: #ffcc00; margin-bottom: 5px; font-size: 0.9rem;}
 .input-group input, .input-group select { 
@@ -121,10 +143,13 @@ button:active { transform: scale(0.98); }
 .aviso-distancia { font-size: 0.85rem; color: #aaa; margin-top: 5px; }
 .resumo-checkout { background-color: #2c2c2c; padding: 15px; border-radius: 8px; margin-top: 10px; text-align: center; border: 1px solid #444; }
 
-.btn-finalizar, .btn-confirmar { background-color: #25d366; color: white; margin-top: 10px; }
+/* Botões */
+.btn-finalizar, .btn-confirmar { background-color: #25d366; color: white; margin-top: 10px; padding: 15px; font-size: 1.1rem; }
 .btn-limpar { background-color: #d32f2f; color: white; margin-top: 10px; }
 .btn-voltar { background-color: #555; color: white; margin-top: 10px; }
+.hidden-troco { display: none; background-color: #333; padding: 10px; border-radius: 8px; border: 1px dashed #ffcc00; margin-bottom: 15px; }
 
+/* Sucesso */
 .msg-sucesso-container { text-align: center; padding: 30px 10px; display: flex; flex-direction: column; align-items: center; }
 .icone-sucesso { font-size: 4rem; margin-bottom: 10px; animation: pular 0.5s infinite alternate; }
 @keyframes pular { from { transform: translateY(0); } to { transform: translateY(-10px); } }
@@ -132,9 +157,27 @@ button:active { transform: scale(0.98); }
 
 footer { padding: 40px 20px; text-align: center; color: #666; background-color: #111; font-size: 0.8rem; margin-top: 40px; }
 
+/* --- RESPONSIVIDADE (CELULARES) --- */
 @media (max-width: 768px) {
+    /* Ajusta Cards */
     .item-card { width: 100%; max-width: 400px; margin-bottom: 20px; }
     .item-card img { height: 200px; }
-    .cart-sidebar { width: 100%; }
+    
+    /* SIDEBAR FULL SCREEN NO CELULAR */
+    .cart-sidebar { 
+        width: 100%; /* Ocupa 100% da largura */
+        max-width: 100%;
+        border-left: none; /* Remove borda se houver */
+    }
+
+    /* Aumenta a área de toque dos botões */
+    .btn-comprar, .btn-confirmar, .btn-finalizar {
+        padding: 16px;
+    }
+    
+    /* Espaçamento lateral do menu */
     .cardapio-container { padding: 10px 15px; }
+    
+    /* Ajuste na pesquisa */
+    #search-input { width: 90%; }
 }
