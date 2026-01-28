@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delivery Turbo</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍔</text></svg>">
 </head>
 <body>
 
     <header>
         <div class="header-content">
             <h1>Delivery <span class="destaque">Turbo</span></h1>
-            <p>Sabor intenso, entrega rápida.</p>
+            <p>O melhor sabor da cidade.</p>
         </div>
         <div class="cart-icon-container" onclick="toggleCart()">
             <span class="cart-icon">🛒</span>
@@ -19,11 +20,14 @@
         </div>
     </header>
 
-  <main id="menu">
+    <div class="search-container">
+        <input type="text" id="search-input" onkeyup="filtrarCardapio()" placeholder="🔍 O que você procura hoje? (Ex: Bacon, Coca...)">
+    </div>
+
+    <main id="menu">
         
-        <h2>🍔 Hambúrgueres Artesanais</h2>
+        <h2>🍔 Nossos Lanches</h2>
         <div class="cardapio-container">
-            
             <div class="item-card">
                 <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400&q=80" alt="X-Bacon">
                 <div class="card-content">
@@ -38,192 +42,47 @@
                 <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80" alt="X-Salada">
                 <div class="card-content">
                     <h3>X-Salada Fresh</h3>
-                    <p>Carne suculenta, alface americana, tomate e maionese verde.</p>
+                    <p>Carne, alface americana, tomate e maionese verde.</p>
                     <span class="preco">R$ 24,90</span>
                     <button class="btn-comprar" onclick="adicionarPedido('X-Salada Fresh', 24.90)">Adicionar</button>
                 </div>
             </div>
-
+            
             <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400&q=80" alt="Cheddar Melt">
-                <div class="card-content">
-                    <h3>Cheddar Melt</h3>
-                    <p>Hambúrguer banhado no creme de cheddar e cebola caramelizada.</p>
-                    <span class="preco">R$ 29,90</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Cheddar Melt', 29.90)">Adicionar</button>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <img src="https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$kDXQUpWx/200/200/original?country=br" alt="Duplo Turbo">
+                <img src="https://images.unsplash.com/photo-1586190848861-99c9574548e3?w=400&q=80" alt="Duplo">
                 <div class="card-content">
                     <h3>Duplo Turbo</h3>
-                    <p>Dois hambúrgueres de 180g, dobro de queijo e bacon.</p>
+                    <p>Dois hambúrgueres e queijo em dobro.</p>
                     <span class="preco">R$ 38,90</span>
                     <button class="btn-comprar" onclick="adicionarPedido('Duplo Turbo', 38.90)">Adicionar</button>
                 </div>
             </div>
-
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&q=80" alt="Smash Burger">
-                <div class="card-content">
-                    <h3>Smash Burger</h3>
-                    <p>Pão brioche, carne prensada na chapa e queijo prato.</p>
-                    <span class="preco">R$ 19,90</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Smash Burger', 19.90)">Adicionar</button>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <img src="https://s2-vogue.glbimg.com/F4TMDrT0LsVvTElZUDevP_zGvZc=/0x0:640x413/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_5dfbcf92c1a84b20a5da5024d398ff2f/internal_photos/bs/2022/Q/K/4pDRJAQqAbvbTKCVKVsg/2017-07-27-smart-burguer-cocoricrok-creditos-wellington-nemeth.jpg" alt="Frango Crispy">
-                <div class="card-content">
-                    <h3>Frango Crispy</h3>
-                    <p>Filé de frango empanado crocante, alface e molho especial.</p>
-                    <span class="preco">R$ 22,90</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Frango Crispy', 22.90)">Adicionar</button>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWi_JhzG9J7fgeZkbrzAUwt7Tb2JJv0lEjpA&s" alt="Costela BBQ">
-                <div class="card-content">
-                    <h3>Costela BBQ</h3>
-                    <p>Hambúrguer de costela, molho barbecue e anéis de cebola.</p>
-                    <span class="preco">R$ 32,90</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Costela BBQ', 32.90)">Adicionar</button>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?w=400&q=80" alt="Veggie Power">
-                <div class="card-content">
-                    <h3>Veggie Power</h3>
-                    <p>Hambúrguer de grão de bico, cogumelos e rúcula.</p>
-                    <span class="preco">R$ 26,90</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Veggie Power', 26.90)">Adicionar</button>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBJZkxa8jfxfNhisAzS8arMT2RQdmjA9s4hA&s" alt="X-Egg House">
-                <div class="card-content">
-                    <h3>X-Egg House</h3>
-                    <p>O clássico com ovo frito, queijo, presunto e salada.</p>
-                    <span class="preco">R$ 23,90</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('X-Egg House', 23.90)">Adicionar</button>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=400&q=80" alt="Monstro Picante">
-                <div class="card-content">
-                    <h3>Monstro Picante</h3>
-                    <p>Hambúrguer, queijo pepper jack, jalapeños e molho picante.</p>
-                    <span class="preco">R$ 30,90</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Monstro Picante', 30.90)">Adicionar</button>
-                </div>
-            </div>
         </div>
 
-        <h2>🥤 Refrigerantes (Lata)</h2>
+        <h2>🥤 Bebidas</h2>
         <div class="cardapio-container">
-            
             <div class="item-card">
                 <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&q=80" alt="Coca-Cola">
                 <div class="card-content">
-                    <h3>Coca-Cola</h3>
-                    <p>Lata 350ml geladíssima.</p>
+                    <h3>Coca-Cola Lata</h3>
+                    <p>350ml gelada.</p>
                     <span class="preco">R$ 6,00</span>
                     <button class="btn-comprar" onclick="adicionarPedido('Coca-Cola Lata', 6.00)">Adicionar</button>
                 </div>
             </div>
-
             <div class="item-card">
-            <img src="https://dmvfarma.vtexassets.com/arquivos/ids/198741/refrigerante-fanta-laranja-lata-310ml-7894900031157_5.jpg?v=637822746663800000" alt="Fanta Laranja">
-                <div class="card-content">
-                    <h3>Fanta Laranja</h3>
-                    <p>Lata 350ml.</p>
-                    <span class="preco">R$ 6,00</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Fanta Laranja Lata', 6.00)">Adicionar</button>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <img src="https://drogal.vtexassets.com/arquivos/ids/168869/25667.png?v=638386905234630000" alt="Guaraná">
-                <div class="card-content">
-                    <h3>Guaraná Antarctica</h3>
-                    <p>O original do Brasil, lata 350ml.</p>
-                    <span class="preco">R$ 6,00</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Guaraná Lata', 6.00)">Adicionar</button>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <img src="https://covabra.vtexassets.com/arquivos/ids/541870-800-450?v=638925350183030000&width=800&height=450&aspect=true" alt="Fanta Uva">
-                <div class="card-content">
-                    <h3>Fanta Uva</h3>
-                    <p>Lata 350ml.</p>
-                    <span class="preco">R$ 6,00</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Fanta Uva Lata', 6.00)">Adicionar</button>
-                </div>
-            </div>
-        </div>
-
-        <h2>🍹 Sucos Naturais (1 Litro)</h2>
-        <div class="cardapio-container">
-            
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400&q=80" alt="Laranja 1L">
+                <img src="https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400&q=80" alt="Suco Laranja">
                 <div class="card-content">
                     <h3>Suco de Laranja</h3>
-                    <p>Garrafa 1L. Feito na hora, sem açúcar.</p>
+                    <p>Natural, garrafa de 1 litro.</p>
                     <span class="preco">R$ 18,00</span>
                     <button class="btn-comprar" onclick="adicionarPedido('Suco Laranja 1L', 18.00)">Adicionar</button>
                 </div>
             </div>
-
-            <div class="item-card">
-                <img src="https://img.freepik.com/fotos-premium/suco-de-maracuja-em-um-copo-com-frutas-sobre-a-mesa-de-madeira_92534-1701.jpg" alt="Maracujá 1L">
-                <div class="card-content">
-                    <h3>Suco de Maracujá</h3>
-                    <p>Garrafa 1L. Acalma e refresca.</p>
-                    <span class="preco">R$ 20,00</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Suco Maracujá 1L', 20.00)">Adicionar</button>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <img src="https://vitat.com.br/receitas/images/recipeshandler.jpg?id=3156&tipo=r&default=s&ims=fit-in/414x275/filters:quality(60)" alt="Cupuaçu 1L">
-                <div class="card-content">
-                    <h3>Suco de Cupuaçu</h3>
-                    <p>Garrafa 1L. Sabor exótico do norte.</p>
-                    <span class="preco">R$ 22,00</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Suco Cupuaçu 1L', 22.00)">Adicionar</button>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMME_re4QSrEqL4DoTjiUVK0pcKH9YHAUnEQ&s" alt="Manga 1L">
-                <div class="card-content">
-                    <h3>Suco de Manga</h3>
-                    <p>Garrafa 1L. Bem cremoso.</p>
-                    <span class="preco">R$ 18,00</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Suco Manga 1L', 18.00)">Adicionar</button>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmzbVL6owoN6G_63D5SYN0ZVCAuej8H2UFg&s" alt="Graviola 1L">
-                <div class="card-content">
-                    <h3>Suco de Graviola</h3>
-                    <p>Garrafa 1L. Sabor único e especial.</p>
-                    <span class="preco">R$ 22,00</span>
-                    <button class="btn-comprar" onclick="adicionarPedido('Suco Graviola 1L', 22.00)">Adicionar</button>
-                </div>
-            </div>
-
         </div>
+
     </main>
+
     <div id="cart-sidebar" class="cart-sidebar">
         <button class="close-cart" onclick="toggleCart()">×</button>
         
@@ -232,13 +91,10 @@
             <div id="aba-carrinho" class="carrinho-secao ativa">
                 <h2>Seu Pedido 🛍️</h2>
                 <ul id="cart-items-list" class="cart-list"></ul>
-                
                 <div class="cart-total">
                     <h3>Total: R$ <span id="cart-total-price">0,00</span></h3>
                 </div>
-
                 <div id="msg-erro" class="msg-erro"></div>
-                
                 <button class="btn-finalizar" onclick="irParaCheckout()">Finalizar Pedido</button>
                 <button class="btn-limpar" onclick="limparCarrinho()">Esvaziar Carrinho 🗑️</button>
             </div>
@@ -248,18 +104,36 @@
                 
                 <div class="input-group">
                     <label>Seu Nome:</label>
-                    <input type="text" id="input-nome" placeholder="Digite seu nome">
+                    <input type="text" id="input-nome" placeholder="Digite seu nome" autocomplete="off">
                 </div>
 
                 <div class="input-group">
-                    <label>Endereço de Entrega:</label>
-                    <input type="text" id="input-endereco" placeholder="Rua, Número, Bairro...">
-                    <p class="aviso-distancia">🛵 Entregamos em um raio de até 7km.</p>
+                    <label>CEP (8 dígitos):</label>
+                    <input type="number" id="input-cep" placeholder="Ex: 22000000" onblur="buscarPeloCep()" autocomplete="off">
+                </div>
+
+                <div class="input-group">
+                    <label>Endereço:</label>
+                    <input type="text" id="input-endereco" placeholder="Digite endereço..." onblur="buscarPeloEndereco()" autocomplete="off">
+                </div>
+
+                <div class="input-group">
+                    <div style="display: flex; gap: 10px;">
+                        <div style="flex: 1;">
+                            <label>Número:</label>
+                            <input type="number" id="input-numero" placeholder="Nº" autocomplete="off">
+                        </div>
+                        <div style="flex: 1;">
+                            <label>Complemento:</label>
+                            <input type="text" id="input-comp" placeholder="Apt/Bloco" autocomplete="off">
+                        </div>
+                    </div>
+                    <p id="aviso-calculo" class="aviso-distancia">🛵 Digite CEP ou Endereço para calcular.</p>
                 </div>
 
                 <div class="input-group">
                     <label>Forma de Pagamento:</label>
-                    <select id="select-pagamento">
+                    <select id="select-pagamento" onchange="verificarPagamento()">
                         <option value="">Selecione...</option>
                         <option value="Cartão de Crédito">Crédito 💳</option>
                         <option value="Cartão de Débito">Débito 💳</option>
@@ -268,8 +142,21 @@
                     </select>
                 </div>
 
+                <div id="area-troco" class="hidden-troco">
+                    <label style="color:#ffcc00; margin-bottom: 5px; display:block;">Precisa de troco?</label>
+                    <div style="display: flex; gap: 20px; margin-bottom: 10px;">
+                        <label><input type="radio" name="precisa-troco" value="nao" checked onclick="toggleCampoTroco(false)"> Não</label>
+                        <label><input type="radio" name="precisa-troco" value="sim" onclick="toggleCampoTroco(true)"> Sim</label>
+                    </div>
+                    
+                    <div id="campo-valor-troco" style="display: none;">
+                        <label>Troco para quanto?</label>
+                        <input type="number" id="input-troco" placeholder="Ex: 50,00">
+                    </div>
+                </div>
+
                 <div class="resumo-checkout">
-                    <p>Taxa de Entrega: <span id="taxa-entrega">R$ 5,00</span></p>
+                    <p>Taxa de Entrega: <span id="taxa-entrega">R$ 0,00</span></p>
                     <h3>Total Final: <span id="total-final">R$ 0,00</span></h3>
                 </div>
 
@@ -277,21 +164,17 @@
                 <button class="btn-voltar" onclick="voltarParaCarrinho()">⬅ Voltar ao Carrinho</button>
             </div>
 
-            <div id="aba-checkout" class="carrinho-secao">
-                </div>
-
             <div id="aba-sucesso" class="carrinho-secao">
                 <div class="msg-sucesso-container">
                     <span class="icone-sucesso">🎉</span>
                     <h2>Pedido Enviado!</h2>
                     <p>Seu pedido foi encaminhado para nosso WhatsApp.</p>
-                    <p>Aguarde nossa confirmação por lá.</p>
-                    
+                    <p>Aguarde a confirmação por lá.</p>
                     <div class="animation-check">✅</div>
-
                     <button class="btn-confirmar" onclick="fecharPedidoTotal()">Fazer Novo Pedido</button>
                 </div>
             </div>
+
         </div>
     </div>
 

@@ -1,113 +1,78 @@
-/* --- 1. RESET E BASE --- */
+/* --- RESET BÁSICO --- */
 body {
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    overflow-x: hidden;
-    -webkit-tap-highlight-color: transparent;
+    background-color: #1a1a1a; color: #ffffff;
+    overflow-x: hidden; -webkit-tap-highlight-color: transparent;
 }
 
-/* --- 2. HEADER --- */
+/* --- HEADER --- */
 header {
-    background-color: #b30000;
-    padding: 15px 5%;
+    background-color: #b30000; padding: 15px 5%;
     border-bottom: 4px solid #ffcc00;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 100;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
-
 .header-content { max-width: 70%; }
 h1 { margin: 0; font-size: 1.5rem; line-height: 1.1; }
 header p { margin: 5px 0 0; font-size: 0.85rem; opacity: 0.9; }
 .destaque { color: #ffcc00; }
 
-/* Ícone Carrinho */
 .cart-icon-container {
-    position: relative;
-    cursor: pointer;
-    padding: 10px;
-    background: rgba(0,0,0,0.1);
-    border-radius: 50%;
+    position: relative; cursor: pointer; padding: 10px;
+    background: rgba(0,0,0,0.1); border-radius: 50%;
 }
 .cart-icon { font-size: 1.8rem; }
 .cart-count {
     position: absolute; top: 0; right: 0;
     background-color: #ffcc00; color: #b30000;
-    font-weight: bold; border-radius: 50%;
-    width: 22px; height: 22px;
+    font-weight: bold; border-radius: 50%; width: 22px; height: 22px;
     display: flex; justify-content: center; align-items: center;
     font-size: 0.8rem; border: 2px solid #b30000;
 }
 
-/* --- 3. MENU E CARDS (Onde a mágica acontece) --- */
+/* --- PESQUISA --- */
+.search-container {
+    padding: 20px 5%;
+    display: flex; justify-content: center;
+    background-color: #222;
+}
+#search-input {
+    width: 100%; max-width: 600px; padding: 12px;
+    border-radius: 25px; border: 2px solid #444;
+    background-color: #333; color: white; font-size: 1rem;
+    outline: none; text-align: center;
+}
+#search-input:focus { border-color: #ffcc00; }
+
+/* --- CARDÁPIO --- */
 h2 {
-    text-align: center;
-    color: #ffcc00;
-    border-bottom: 2px solid #333;
-    padding-bottom: 10px;
-    margin: 30px auto 20px;
-    display: table;
-    font-size: 1.4rem;
+    text-align: center; color: #ffcc00; border-bottom: 2px solid #333;
+    padding-bottom: 10px; margin: 30px auto 20px;
+    display: table; font-size: 1.4rem;
 }
-
 .cardapio-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 10px; /* Reduzi o padding lateral para ganhar espaço no mobile */
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 20px; padding: 10px; max-width: 1200px; margin: 0 auto;
 }
 
-/* ESTILO DO CARD */
 .item-card {
-    background-color: #2c2c2c;
-    border-radius: 12px;
-    /* No Desktop: largura fixa */
-    width: 280px; 
-    display: flex;
-    flex-direction: column; /* ISSO GARANTE: FOTO EM CIMA, TEXTO EMBAIXO */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    overflow: hidden; /* Garante que a imagem não saia das bordas arredondadas */
+    background-color: #2c2c2c; border-radius: 12px;
+    width: 280px; display: flex; flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5); overflow: hidden;
     transition: transform 0.2s;
 }
-
 .item-card:hover { transform: translateY(-5px); }
+.item-card img { width: 100%; height: 180px; object-fit: cover; }
 
-/* A Imagem */
-.item-card img {
-    width: 100%;
-    height: 180px; /* Altura padrão */
-    object-fit: cover; /* Corta a imagem para preencher sem distorcer */
-}
-
-/* O Texto dentro do card */
 .card-content {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Ocupa o espaço que sobrar */
-    justify-content: space-between;
+    padding: 15px; display: flex; flex-direction: column;
+    flex-grow: 1; justify-content: space-between;
 }
-
 .card-content h3 { margin: 0 0 8px 0; color: #ffcc00; font-size: 1.1rem; }
-.card-content p { font-size: 0.9rem; color: #ddd; margin-bottom: 15px; line-height: 1.4; }
-
-.preco {
-    font-size: 1.3rem;
-    color: #ffcc00;
-    font-weight: bold;
-    margin-bottom: 10px;
-    display: block;
-}
+.card-content p { font-size: 0.9rem; color: #ddd; margin-bottom: 15px; }
+.preco { font-size: 1.3rem; color: #ffcc00; font-weight: bold; margin-bottom: 10px; display: block; }
 
 button {
     border: none; padding: 12px; font-weight: bold; cursor: pointer;
@@ -117,113 +82,59 @@ button {
 button:active { transform: scale(0.98); }
 .btn-comprar { background-color: #ffcc00; color: #b30000; }
 
-/* --- 4. BARRA LATERAL / CHECKOUT --- */
+/* --- SIDEBAR --- */
 .cart-sidebar {
     position: fixed; top: 0; right: 0;
     width: 350px; height: 100vh;
-    background-color: #222;
-    box-shadow: -5px 0 25px rgba(0,0,0,0.7);
-    padding: 20px;
-    display: flex; flex-direction: column;
-    z-index: 2000;
-    transform: translateX(100%);
+    background-color: #222; box-shadow: -5px 0 25px rgba(0,0,0,0.7);
+    padding: 20px; display: flex; flex-direction: column;
+    z-index: 2000; transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     padding-bottom: env(safe-area-inset-bottom);
 }
 .cart-sidebar.cart-open { transform: translateX(0); }
-
 .sidebar-content { position: relative; flex-grow: 1; overflow-x: hidden; overflow-y: auto; }
+.close-cart { background: none; color: #ffcc00; font-size: 2.5rem; align-self: flex-end; padding: 0 10px; margin-bottom: 10px; }
 
 .carrinho-secao {
     position: absolute; top: 0; left: 0; width: 100%;
     opacity: 0; visibility: hidden; transform: translateX(30px);
-    transition: all 0.3s ease; padding-bottom: 80px; /* Espaço para não cobrir botões */
+    transition: all 0.3s ease; padding-bottom: 80px;
 }
 .carrinho-secao.ativa { opacity: 1; visibility: visible; transform: translateX(0); position: relative; }
 
-/* Elementos internos do carrinho */
-.close-cart { background: none; color: #ffcc00; font-size: 2.5rem; align-self: flex-end; padding: 0 10px; margin-bottom: 10px; }
+/* Estilos de Troco */
+.hidden-troco { display: none; background-color: #333; padding: 10px; border-radius: 8px; border: 1px dashed #ffcc00; margin-bottom: 15px; }
+
+/* Formulários */
 .cart-list { list-style: none; padding: 0; margin: 10px 0 20px; }
 .cart-list li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #444; font-size: 0.95rem; }
 .cart-total { background-color: #333; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center; }
 .msg-erro { color: #ff5555; text-align: center; font-weight: bold; min-height: 20px; margin-bottom: 10px; font-size: 0.9rem; }
 
-/* Inputs e Botões do Carrinho */
 .input-group { margin-bottom: 15px; text-align: left; }
 .input-group label { display: block; color: #ffcc00; margin-bottom: 5px; font-size: 0.9rem;}
-.input-group input, .input-group select { width: 100%; padding: 12px; background-color: #333; border: 1px solid #555; color: white; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
+.input-group input, .input-group select { 
+    width: 100%; padding: 12px; background-color: #333; 
+    border: 1px solid #555; color: white; border-radius: 6px; box-sizing: border-box; font-size: 1rem; 
+}
+.aviso-distancia { font-size: 0.85rem; color: #aaa; margin-top: 5px; }
 .resumo-checkout { background-color: #2c2c2c; padding: 15px; border-radius: 8px; margin-top: 10px; text-align: center; border: 1px solid #444; }
-.btn-finalizar, .btn-confirmar { background-color: #25d366; color: white; margin-top: 10px; font-size: 1.1rem; }
+
+.btn-finalizar, .btn-confirmar { background-color: #25d366; color: white; margin-top: 10px; }
 .btn-limpar { background-color: #d32f2f; color: white; margin-top: 10px; }
 .btn-voltar { background-color: #555; color: white; margin-top: 10px; }
 
+.msg-sucesso-container { text-align: center; padding: 30px 10px; display: flex; flex-direction: column; align-items: center; }
+.icone-sucesso { font-size: 4rem; margin-bottom: 10px; animation: pular 0.5s infinite alternate; }
+@keyframes pular { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+.animation-check { font-size: 5rem; margin: 30px 0; color: #25d366; }
+
 footer { padding: 40px 20px; text-align: center; color: #666; background-color: #111; font-size: 0.8rem; margin-top: 40px; }
 
-/* --- TELA DE SUCESSO --- */
-.msg-sucesso-container {
-    text-align: center;
-    padding: 30px 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.icone-sucesso {
-    font-size: 4rem;
-    margin-bottom: 10px;
-    animation: pular 0.5s infinite alternate;
-}
-
-@keyframes pular {
-    from { transform: translateY(0); }
-    to { transform: translateY(-10px); }
-}
-
-.msg-sucesso-container h2 {
-    color: #25d366; /* Verde WhatsApp */
-    margin-bottom: 10px;
-}
-
-.msg-sucesso-container p {
-    color: #ccc;
-    font-size: 1rem;
-    margin-bottom: 5px;
-}
-
-.animation-check {
-    font-size: 5rem;
-    margin: 30px 0;
-    color: #25d366;
-}
-
-/* --- 5. RESPONSIVIDADE (CELULARES) --- */
 @media (max-width: 768px) {
-    
-    .cardapio-container {
-        padding: 10px 15px; /* Margem lateral pequena */
-    }
-
-    /* MUDANÇA PRINCIPAL NOS CARDS AQUI */
-    .item-card {
-        width: 100%; /* Ocupa 100% da largura disponível */
-        max-width: 400px; /* Limite para não ficar gigante em tablets */
-        margin-bottom: 20px; /* Espaço entre um card e outro */
-        
-        /* Garante estrutura vertical */
-        display: flex; 
-        flex-direction: column; 
-    }
-
-    .item-card img {
-        height: 200px; /* Altura generosa para a foto */
-    }
-
-    /* Carrinho Full Screen */
-    .cart-sidebar { width: 100%; padding: 15px; box-sizing: border-box; }
-    
-    header { padding: 10px 15px; }
-    h1 { font-size: 1.3rem; }
-    button { padding: 15px; } /* Botão maior para o dedo */
+    .item-card { width: 100%; max-width: 400px; margin-bottom: 20px; }
+    .item-card img { height: 200px; }
+    .cart-sidebar { width: 100%; }
+    .cardapio-container { padding: 10px 15px; }
 }
